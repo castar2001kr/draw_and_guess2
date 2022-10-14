@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="onans"/>
+		<item key="selection" value="Session"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="session"/>
 			<item value="onans"/>
 			<item value="resetprofiles"/>
 			<item value="refresh"/>
@@ -22,7 +23,6 @@
 			<item value="console.log"/>
 			<item value="eventMake"/>
 			<item value="dispatcher"/>
-			<item value="lockRoom"/>
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -63,6 +63,12 @@ public class RoomManager {
 			
 			if(!q.isEmpty()) {
 				newHostPid = q.poll().getId();
+				if(this.getPlayer(newHostPid).getSession()==null) {
+					
+					cleared = true;
+					clearThisRoom();
+					return 2;
+				}
 			}
 			
 			if(newHostPid<0) {

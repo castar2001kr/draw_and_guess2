@@ -36,6 +36,8 @@ private Session session;
 	public Player(){
 	}
 	
+	
+	
 	public Player(MemberDTO member) {
 		
 		this.id = member.getId();
@@ -176,5 +178,8 @@ private Session session;
 		this.session=hs;
 	}
 
+	public Session getSession() {
+		return this.session;
+	}
 	
 }
