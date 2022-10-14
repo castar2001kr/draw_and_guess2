@@ -93,10 +93,7 @@ public class Listener {
 			
 			int h = ((Long)obj.get("h")).intValue();
 			System.out.println("헤더 : "+h);
-			if(h<=7) {
-				
-				router[h].submit(obj);
-			}
+			router[h].submit(obj);
 			
 			
 		} catch (ParseException | NullPointerException e) {
