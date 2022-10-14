@@ -1,0 +1,8 @@
+package game.ajax;
+
+public class ResultMsg {
+
+	public static String emit(String msg) {
+		
+	}
+}

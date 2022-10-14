@@ -1,0 +1,75 @@
+package game.controller;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONObject;
+
+import game.managers.RoomListManager;
+import game.managers.RoomManager;
+import game.player.Player;
+import game.service.GameService;
+import member.dto.MemberDTO;
+
+/**
+ * Servlet implementation class Room
+ */
+@WebServlet("/Room")
+public class Room extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		synchronized(request.getSession()) {
+			
+		}
+		
+		int rid = Integer.parseInt(request.getParameter("rid"));
+		String name = request.getParameter("roomname");
+		
+		if(request.getSession().getAttribute("PLAYER")==null) {
+			
+			
+			MemberDTO member = (MemberDTO)(request.getSession().getAttribute("MemberDTO"));
+			
+			if(member!=null) {
+				
+				Player player = new Player(member);
+				RoomManager room = RoomListManager.getRoom(rid);
+				
+				if(room!=null) {
+					
+					GameService service = room.getService();
+					if(service.enter(player)!=null) {
+						
+					}
+				}
+				
+				response.getWriter().print(failedMsg());
+			}
+			
+			
+		}
+		
+		request.getSession().removeAttribute("PLAYER");
+		response.getWriter().print(failedMsg());
+	}
+
+	@SuppressWarnings("unchecked")
+	String failedMsg() {
+		
+		JSONObject obj = new JSONObject();
+		obj.put("result", false);
+		return obj.toJSONString();
+	} 
+
+}

@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\desktop\refactorying\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2881885900.index
+3504843384.index
+447383224.index
+2268999727.index
+1367048744.index
+1744858135.index

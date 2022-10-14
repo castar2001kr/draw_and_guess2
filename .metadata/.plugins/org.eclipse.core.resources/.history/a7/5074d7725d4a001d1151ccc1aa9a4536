@@ -1,0 +1,13 @@
+package game.MessageBroker;
+
+import org.json.simple.JSONObject;
+
+public class MsgMaker {
+	
+	public static String make(int header, int action, int pid ,int body) {
+		
+		JSONObject obj = new JSONObject();
+		obj.put("h", header);
+		
+	}
+}

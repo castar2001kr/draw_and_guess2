@@ -1,0 +1,8 @@
+package game.MessageBroker;
+
+import org.json.simple.JSONObject;
+
+public Interface Router {
+
+	public void submit(JSONObject obj);
+}

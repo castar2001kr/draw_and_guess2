@@ -1,0 +1,13 @@
+package game.repository;
+
+public class SearchNode {
+
+	private SearchNode before;
+	private SearchNode after;
+	
+	public SearchNode(SearchNode before, SearchNode after) {
+		this.before=before;
+		this.after = after;
+	}
+	
+}

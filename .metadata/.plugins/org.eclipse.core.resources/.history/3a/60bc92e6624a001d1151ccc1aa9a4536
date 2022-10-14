@@ -1,0 +1,46 @@
+package game.MessageBroker;
+
+import java.util.Queue;
+
+import org.json.simple.JSONObject;
+
+import game.managers.RoomManager;
+import game.repository.SearchNode;
+
+public class DrawBroker {
+
+private final RoomManager room;
+private final int HostPid;	
+
+	DrawBroker(RoomManager room, int HostPid) {
+
+		this.room = room;
+		this.HostPid=HostPid;
+	}
+	
+	void send(JSONObject obj) {
+		
+	
+			
+			if(HostPid!=(int)((long)obj.get("p"))) {
+				return;
+			}
+			
+			String msg = obj.toJSONString();
+			
+			Queue<SearchNode> players =  room.getPlayers();
+			
+			while(!players.isEmpty()) {
+				try {
+					
+				}catch (NullPointerException e) {
+					// TODO: handle exception
+				}
+				room.getPlayer(players.poll().getId()).propMsg(msg);
+			}
+			
+		
+		
+	}
+	
+}

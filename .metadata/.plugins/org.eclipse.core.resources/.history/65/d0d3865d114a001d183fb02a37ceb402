@@ -1,0 +1,75 @@
+package game.repository;
+
+import java.util.HashMap;
+import java.util.Queue;
+
+public class SearchSet {
+
+	private final HashMap<Integer, SearchNode> map;
+	private final SearchNode FirstNode;
+	private SearchNode LastNode;
+	
+	public SearchSet(){
+		
+		map=new HashMap<>();
+		FirstNode = new SearchNode();
+		LastNode = FirstNode;
+	}
+	
+	public void add(int id, String name) {
+		
+		synchronized(map) {
+			
+			SearchNode node = new SearchNode(LastNode,null);
+			node.setId(id);
+			node.setName(name);
+			
+			LastNode.setAfter(node);
+			LastNode = node;
+			
+			map.put(id, node);
+		}
+		
+	}
+	
+	public void delete(int id) {
+		
+		synchronized(map) {
+			
+			SearchNode node = map.get(id);
+			SearchNode before = node.getBefore();
+			SearchNode after = node.getAfter();
+			
+			
+			before.setAfter(after);
+			
+			if(after!=null) {
+				
+				after.setBefore(before);
+			}
+			
+			if(LastNode.equals(node)) {
+				
+				LastNode = node.getBefore();
+			}
+			
+		}	
+	
+	}
+	
+	public LinkedList<Integer> getAll(){
+		
+		SearchNode cur = FirstNode;
+		Queue<SearchNode> queue = new LinkedList<SearchNode>();
+		
+		
+		while(cur == null) {
+			
+			
+			
+		}
+		
+	}
+	
+	
+}

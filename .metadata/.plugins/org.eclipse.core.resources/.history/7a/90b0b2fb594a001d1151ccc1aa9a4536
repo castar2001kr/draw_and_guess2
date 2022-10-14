@@ -1,0 +1,5 @@
+package game.MessageBroker;
+
+public class ChatBroker {
+
+}

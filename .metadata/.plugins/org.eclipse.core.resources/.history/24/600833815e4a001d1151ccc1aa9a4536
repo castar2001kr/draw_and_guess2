@@ -1,0 +1,49 @@
+package game.MessageBroker;
+
+import java.util.Queue;
+
+import org.json.simple.JSONObject;
+
+import game.managers.RoomManager;
+import game.repository.SearchNode;
+
+public class EnvChangedBroker {
+
+	private final RoomManager room;
+	
+	EnvChangedBroker(RoomManager room) {
+
+		this.room = room;
+	}
+	
+	private String makeHostChangeMsg() {
+		
+		return MsgMaker.make(1, 7, -1, 0);
+		
+	}
+	
+	void sendHostChangeMsg() {
+		
+		send(makeHostChangeMsg());
+	}
+	
+	
+	private String makeEnterMsg() {
+		
+	}
+	
+	
+	
+	
+	
+	
+	void send(String msg) throws NullPointerException {
+		
+		Queue<SearchNode> players =  room.getPlayers();
+		
+		while(!players.isEmpty()) {
+			room.getPlayer(players.poll().getId()).propMsg(msg);
+		}
+	}
+	
+}

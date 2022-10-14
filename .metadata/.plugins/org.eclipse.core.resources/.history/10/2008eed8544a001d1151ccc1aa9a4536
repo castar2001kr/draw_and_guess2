@@ -1,0 +1,11 @@
+package game.service;
+
+public class AnswerChecker {
+
+	private final Process pro;
+	
+	AnswerChecker(Process pro){
+		
+	}
+	
+}

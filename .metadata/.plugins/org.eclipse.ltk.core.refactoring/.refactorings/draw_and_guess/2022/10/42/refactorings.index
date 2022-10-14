@@ -1,0 +1,21 @@
+1665565186104	Rename compilation unit 'Info.java'
+1665565422295	Rename type 'IDManager'
+1665565555752	Rename type 'Node'
+1665570891874	Rename type 'IDBoxManager'
+1665571736508	Rename compilation unit 'player.java'
+1665598567070	Rename package 'MessageBroker'
+1665608241194	Rename package 'game.MessageBroker'
+1665617163845	Rename type 'Configurator'
+1665617167689	Rename type 'config'
+1665617891092	Rename package 'player'
+1665620698416	Rename type 'roommaker'
+1665620705831	Rename type 'RoomMake'
+1665625538035	Delete element
+1665627466790	Delete element
+1665638004096	Rename type 'ResultMsg'
+1665638563029	Move compilation unit
+1665638565946	Move compilation unit
+1665641576226	Rename type 'play'
+1665643404830	Move 'gameIO.js' to 'gameIO'
+1665643413592	Delete element
+1665643612404	Delete element

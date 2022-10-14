@@ -1,0 +1,3 @@
+INDEX VERSION 1.131
+C:\desktop\refactorying\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1530434412.index
+\draw_and_guess\src\main\java

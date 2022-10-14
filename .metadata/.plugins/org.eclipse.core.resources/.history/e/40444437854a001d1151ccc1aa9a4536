@@ -1,0 +1,6 @@
+package game.socket;
+
+@WebListener
+public class Configurator {
+
+}

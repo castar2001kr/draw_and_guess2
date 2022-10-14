@@ -1,0 +1,13 @@
+package game.repository;
+
+public class InfoBox<E> {
+
+	private boolean state;
+	private E info;
+	
+	public boolean getState() {
+		return state;
+	}
+	
+	
+}

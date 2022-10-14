@@ -1,0 +1,8 @@
+package game.repository;
+
+public class InfoBox<E> {
+
+	private boolean lock;
+	private E 
+	
+}

@@ -1,0 +1,14 @@
+package game.ajax;
+
+import org.json.simple.JSONObject;
+
+public class ResultMsg {
+
+	public static String emit(String msg) {
+		
+		JSONObject obj = new JSONObject();
+		obj.put("msg", msg);
+		
+		return obj.toJSONString();
+	}
+}

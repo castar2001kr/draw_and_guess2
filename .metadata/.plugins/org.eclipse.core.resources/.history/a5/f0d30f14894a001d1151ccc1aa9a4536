@@ -1,0 +1,79 @@
+package game.socket;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javax.servlet.http.HttpSession;
+import javax.websocket.EndpointConfig;
+import javax.websocket.OnClose;
+import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;
+import javax.websocket.Session;
+import javax.websocket.server.ServerEndpoint;
+
+import game.managers.RoomManager;
+import game.player.Player;
+import game.service.GameService;
+
+@ServerEndpoint(value = "/game.io", configurator = Config.class)
+public class WebSocket {
+
+	private Player player;
+	private GameService service;
+	private Timer timer;
+	private int pid;
+	private HttpSession hs;
+	
+	
+	@OnOpen
+	public void handleOpen(Session session, EndpointConfig config) throws Exception {
+		
+		hs = (HttpSession) config.getUserProperties().get("SESSION");
+		player = (Player) hs.getAttribute("PLAYER");
+		pid = player.getPid();
+		service = player.getRoom().getService();
+		
+		TimerTask task = new TimerTask() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				player.emitMsg();
+			}
+		};
+		
+		timer.schedule(task, 600);
+		
+		
+	}
+	
+	@OnMessage
+	public void handleMessage(String msg) {
+		
+		service.socketSend(msg, pid);
+	}
+	
+	@OnClose
+	public void handleClose() {
+		
+		if(timer!=null) {
+			timer.cancel();
+		}
+		
+		if(hs!=null) {
+			hs.removeAttribute("PLAYER");
+		}
+		
+		if(player!=null) {
+			service.exit(player);
+		}
+		
+	}
+	
+	@onError
+	public void handleError() {
+		handleClose();
+	}
+	
+	
+}

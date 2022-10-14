@@ -1,0 +1,23 @@
+package game.MessageBroker;
+
+import org.json.simple.JSONObject;
+
+import game.managers.RoomManager;
+
+public class EnvChangedBroker {
+
+	private final RoomManager room;
+	
+	EnvChangedBroker(RoomManager room) {
+
+		this.room = room;
+	}
+	
+	private String makeHostChangeMsg() {
+		
+		int HostPid = room.getHostPid();
+		
+		return MsgMaker.make(1, 7, -1, 0);
+		
+	}
+}

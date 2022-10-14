@@ -1,0 +1,12 @@
+
+10월 13, 2022 18:35:12.129 NEW SESSION
+10월 13, 2022 18:35:12.129 [14376:13232:1013/183512.126:ERROR:device_event_log_impl.cc(214)] [18:35:12.127] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+10월 13, 2022 18:35:12.137 [14376:13232:1013/183512.136:ERROR:device_event_log_impl.cc(214)] [18:35:12.136] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+10월 13, 2022 18:36:09.831 [14376:10916:1013/183609.830:ERROR:util.cc(129)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+10월 13, 2022 22:01:34.32 [14376:13604:1013/220134.031:ERROR:connection_factory_impl.cc(425)] Failed to connect to MCS endpoint with error -105
+10월 14, 2022 08:23:48.515 [14376:16364:1014/082348.493:ERROR:util.cc(129)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+10월 14, 2022 08:23:48.786 [14376:13604:1014/082348.785:ERROR:connection_factory_impl.cc(425)] Failed to connect to MCS endpoint with error -106
+10월 14, 2022 08:23:48.789 [14376:11220:1014/082348.788:ERROR:get_updates_processor.cc(260)] PostClientToServerMessage() failed during GetUpdates with error 2
+10월 14, 2022 15:54:43.129 [3752:9428:1014/155443.127:ERROR:device_event_log_impl.cc(214)] [15:54:43.127] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+10월 14, 2022 15:54:43.130 [3752:9428:1014/155443.128:ERROR:device_event_log_impl.cc(214)] [15:54:43.127] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+10월 14, 2022 15:55:40.991 [3752:13840:1014/155540.990:ERROR:util.cc(129)] Can't create base directory: C:\Program Files\Google\GoogleUpdater

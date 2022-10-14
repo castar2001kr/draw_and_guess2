@@ -1,0 +1,21 @@
+package game.MessageBroker;
+
+import org.json.simple.JSONObject;
+
+import game.managers.RoomManager;
+
+public class ChatBroker {
+
+	private final RoomManager room;
+	
+	ChatBroker(RoomManager room) {
+
+		this.room = room;
+	}
+	
+	void send(JSONObject obj) {
+		
+		room.getPlayers()
+	}
+	
+}

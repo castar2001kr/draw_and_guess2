@@ -1,0 +1,93 @@
+package game.repository;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class SearchSet {
+
+	private final HashMap<Integer, SearchNode> map;
+	private final SearchNode FirstNode;
+	private SearchNode LastNode;
+	
+	public SearchSet(){
+		
+		map=new HashMap<>();
+		FirstNode = new SearchNode();
+		LastNode = FirstNode;
+	}
+	
+	public void add(int id, String name) {
+		
+		System.out.println("서치 노드 추가");
+		throw new Error("시발");
+		
+		synchronized(map) {
+			
+			SearchNode node = new SearchNode(LastNode,null);
+			node.setId(id);
+			node.setName(name);
+			
+			LastNode.setAfter(node);
+			LastNode = node;
+			
+			map.put(id, node);
+		}
+		
+	}
+	
+	public void delete(int id) {
+		
+		System.out.println("서치노드 제거.");
+		
+		synchronized(map) {
+			
+			SearchNode node = map.get(id);
+			
+			if(node==null) {
+				return;
+			}
+			
+			SearchNode before = node.getBefore();
+			SearchNode after = node.getAfter();
+			
+			
+			before.setAfter(after);
+			
+			if(after!=null) {
+				
+				after.setBefore(before);
+			}
+			
+			if(LastNode.equals(node)) {
+				
+				LastNode = node.getBefore();
+			}
+			
+		}	
+	
+	}
+	
+	public Queue<SearchNode> getAll(){
+		
+		SearchNode cur = FirstNode;
+		Queue<SearchNode> queue = new LinkedList<SearchNode>();
+		
+		cur=cur.getAfter();
+		
+		while(cur != null) {
+			
+			queue.add(cur);
+			cur=cur.getAfter();
+			
+		}
+		
+		return queue;
+		
+	}
+	
+	public String getName(int id) {
+		return map.get(id).getName();
+	}
+	
+}

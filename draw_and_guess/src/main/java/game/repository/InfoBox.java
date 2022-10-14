@@ -1,0 +1,29 @@
+package game.repository;
+
+public class InfoBox<E> {
+
+	private boolean state;
+	private E info;
+	
+	synchronized public void setState(boolean state) {
+		this.state = state;
+	}
+	
+	synchronized public E getInfo() {
+		
+		if(this.state) {
+			
+			return this.info;
+		}else {
+			return null;
+		}
+	}
+	
+	synchronized public void setInfo(E info) {
+		
+		this.info = info;
+		
+	}
+	
+	
+}

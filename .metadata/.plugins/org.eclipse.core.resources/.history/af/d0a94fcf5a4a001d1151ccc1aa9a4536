@@ -1,0 +1,28 @@
+package game.MessageBroker;
+
+import java.util.Queue;
+
+import org.json.simple.JSONObject;
+
+import game.managers.RoomManager;
+import game.repository.SearchNode;
+
+public class ChatBroker {
+
+	private final RoomManager room;
+	
+	ChatBroker(RoomManager room) {
+
+		this.room = room;
+	}
+	
+	void send(JSONObject obj) {
+		
+		Queue<SearchNode> players =  room.getPlayers();
+		
+		while(!players.isEmpty()) {
+			room.getPlayer(0)
+		}
+	}
+	
+}

@@ -1,0 +1,12 @@
+package game.MessageBroker;
+
+import game.managers.RoomManager;
+
+public class ChatBroker {
+
+	private final RoomManager room;
+	
+	public ChatBroker() {
+		// TODO Auto-generated constructor stub
+	}
+}

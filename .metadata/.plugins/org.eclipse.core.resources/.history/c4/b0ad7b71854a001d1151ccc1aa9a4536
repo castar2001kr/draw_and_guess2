@@ -1,0 +1,9 @@
+package game.socket;
+
+import javax.servlet.annotation.WebListener;
+import javax.websocket.server.ServerEndpointConfig.Configurator;
+
+@WebListener
+public class Config extends Configurator{
+
+}

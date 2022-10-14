@@ -1,0 +1,111 @@
+package game.MessageBroker;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import game.managers.RoomManager;
+import game.service.AnswerChecker;
+
+public class Listener {
+
+	JSONParser parser = new JSONParser(); 
+	
+	private final RoomManager room;
+	
+	private final Router[] router = new Router[7];
+	
+	private DrawBroker drawBroker;
+
+	private AnsBroker ansBroker;
+	
+	private final ChatBroker chatBroker;
+	
+	private Object[] gameBrokers = new Object[2];
+	
+	public Listener(RoomManager room) {
+		
+		this.room = room;
+		chatBroker = new ChatBroker(room); //5
+		gameBrokers[0] = ansBroker; //0
+		gameBrokers[1] = drawBroker; //3
+		
+		router[0] = new Router() {
+			
+			@Override
+			public void submit(JSONObject obj) {
+				// TODO Auto-generated method stub
+				synchronized (gameBrokers) {
+					
+					AnsBroker ans = ((AnsBroker)gameBrokers[0]);
+					ans.send(obj);
+				}
+			}
+		};
+		
+		router[3] = new Router() {
+			
+			@Override
+			public void submit(JSONObject obj) {
+				// TODO Auto-generated method stub
+				
+				synchronized (gameBrokers) {
+				
+					DrawBroker draw = ((DrawBroker)gameBrokers[1]);
+					draw.send(obj);
+				}
+				
+			}
+		};
+		
+		router[5] = new Router() {
+			
+			@Override
+			public void submit(JSONObject obj) {
+				// TODO Auto-generated method stub
+				chatBroker.send(obj);
+				
+			}
+		};
+		
+	}
+	
+	public void listen(String msg, int pid) {
+		
+		try {
+			JSONObject obj = (JSONObject) parser.parse(msg);
+			
+			if(((Long)obj.get("p")).intValue() != pid) {
+				return;
+			}
+			
+			
+			
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+		}
+		
+	}
+	
+	public void gameStart(int HostPid, AnswerChecker checker) {
+		
+		synchronized(gameBrokers) {
+			
+			drawBroker = new DrawBroker(room, HostPid);
+			ansBroker = new AnsBroker(room, HostPid, checker);
+		}
+		
+	}
+	
+	public void gameEnd() {
+		
+		synchronized(gameBrokers) {
+			
+			drawBroker = null;
+			ansBroker = null;
+		}
+		
+	}
+	
+}

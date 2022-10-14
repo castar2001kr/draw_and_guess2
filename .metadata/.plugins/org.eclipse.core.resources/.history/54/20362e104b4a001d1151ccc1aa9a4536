@@ -1,0 +1,46 @@
+package game.managers;
+
+import game.repository.IDBoxRepository;
+import player.Player;
+
+public class RoomListManager { // singleton
+
+	private static final RoomListManager manager = new RoomListManager();
+	private final IDBoxRepository<RoomManager> repo;
+	private final int SIZE;
+	
+	
+	private RoomListManager() {
+		
+		SIZE = 100;
+		repo = new IDBoxRepository<>(SIZE);
+	}
+	
+	static private RoomListManager getInstance() {
+		return manager;
+	}
+	
+	public static RoomManager addRoom(Player p, String title) {
+		
+		RoomManager room = new RoomManager(title, -1);
+		int rid = manager.repo.getId(room);
+		
+		if(rid<0) {
+			return null;
+		}
+		
+		room.setRid(rid);
+		room.in(p);
+		
+		repo.unlockInfo(rid);
+		return room;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+}

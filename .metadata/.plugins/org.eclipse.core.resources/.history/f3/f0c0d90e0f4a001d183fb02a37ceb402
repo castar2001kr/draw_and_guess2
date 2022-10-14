@@ -1,0 +1,28 @@
+package game.repository;
+
+import java.util.HashMap;
+
+public class SearchSet {
+
+	private final HashMap<Integer, SearchNode> map;
+	private final SearchNode FirstNode;
+	private SearchNode LastNode;
+	
+	public SearchSet(){
+		
+		map=new HashMap<>();
+		FirstNode = new SearchNode();
+		LastNode = FirstNode;
+	}
+	
+	public void push(int id, String name) {
+		
+		SearchNode node = new SearchNode(LastNode,null);
+		node.setId(id);
+		node.setName(name);
+		
+		LastNode.setAfter(node);
+	}
+	
+	
+}

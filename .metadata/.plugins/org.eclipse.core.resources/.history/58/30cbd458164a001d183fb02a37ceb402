@@ -1,0 +1,95 @@
+package game.repository;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class IDBoxManager<E> {
+
+	private final int SIZE;
+	private final InfoBox<E> [] BOX_SET;
+	private final Queue<Integer> IDQ;
+	private final SearchSet S_SET;
+	private boolean locked = false;
+
+	
+	@SuppressWarnings("unchecked")
+	public IDBoxManager(int size) {
+
+		SIZE = size;
+		BOX_SET = new InfoBox[size];
+		IDQ = new LinkedList<>();
+		
+		for(int i=0; i<size; i++) {
+			IDQ.add(i);
+		}
+		
+		S_SET = new SearchSet();
+		
+	}
+	
+	public int getId(E info) {
+	
+		int id = -1;
+		
+		synchronized (IDQ) {
+			
+			if(!IDQ.isEmpty()&&!locked) {
+				
+				id = IDQ.poll();
+			}
+			
+		}
+		
+		if(BOX_SET[id]==null) {
+			
+			BOX_SET[id] = new InfoBox<E>();
+		}
+		
+		BOX_SET[id].setInfo(info);
+
+		return id;
+	}
+	
+	public void returnId(int id) {
+		
+		BOX_SET[id].setState(false);
+		BOX_SET[id].setInfo(null);
+		
+		synchronized (IDQ) {
+			
+			IDQ.add(id);
+		}
+	}
+	
+	public E getInfo(int id) {
+		
+		return BOX_SET[id].getInfo();
+	}
+	
+	public Queue<Node> getAll(){
+		
+		return 
+	}
+	
+	
+	public void lockInfo(int id) {
+		
+		BOX_SET[id].setState(false);
+	}
+	
+	public void unlockInfo(int id) {
+		
+		BOX_SET[id].setState(true);
+	}
+	
+	synchronized public void lockManger() {
+		this.locked=true;
+	}
+	
+	synchronized public void unlockManger() {
+		this.locked=false;
+	}
+	
+	
+	
+}

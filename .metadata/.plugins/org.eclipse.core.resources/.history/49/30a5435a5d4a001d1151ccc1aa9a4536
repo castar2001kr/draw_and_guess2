@@ -1,0 +1,8 @@
+package game.MessageBroker;
+
+public class MsgMaker {
+	
+	public static String make(int header, int action, int pid ,int body) {
+		
+	}
+}

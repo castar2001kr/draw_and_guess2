@@ -1,0 +1,25 @@
+package game.managers;
+
+import game.repository.IDBoxRepository;
+
+public class RoomListManager { // singleton
+
+	private static final RoomListManager manager = new RoomListManager();
+	private final IDBoxRepository<RoomManager> repo;
+	private final int SIZE;
+	
+	
+	private RoomListManager() {
+		
+		SIZE = 100;
+		repo = new IDBoxRepository<>(SIZE);
+	}
+	
+	static private RoomListManager getInstance() {
+		return manager;
+	}
+	
+	
+	
+	
+}

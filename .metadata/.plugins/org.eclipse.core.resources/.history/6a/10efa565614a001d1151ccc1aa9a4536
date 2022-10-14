@@ -1,0 +1,46 @@
+package game.MessageBroker;
+
+import java.util.Queue;
+
+import org.json.simple.JSONObject;
+
+import game.managers.RoomManager;
+import game.repository.SearchNode;
+import game.service.AnswerChecker;
+
+public class AnsBroker {
+
+	private final RoomManager room;
+	private final int HostPid;	
+	private final AnswerChecker checker;
+
+	AnsBroker(RoomManager room, int HostPid, AnswerChecker checker) {
+
+		this.room = room;
+		this.HostPid = HostPid;
+		this.checker = checker;
+		
+	}
+		
+	void send(JSONObject obj) {
+		
+		try {
+			
+			if(HostPid==(int)((long)obj.get("p"))) {
+				return;
+			}
+			
+			String msg = obj.toJSONString();
+			
+			Queue<SearchNode> players =  room.getPlayers();
+			
+			while(!players.isEmpty()) {
+				room.getPlayer(players.poll().getId()).propMsg(msg);
+			}
+			
+		}catch (NullPointerException e) {
+		}
+		
+	}
+	
+}

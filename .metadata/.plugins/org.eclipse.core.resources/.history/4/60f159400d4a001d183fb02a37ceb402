@@ -1,0 +1,8 @@
+package game.repository;
+
+public class SearchNode {
+
+	private SearchNode before;
+	
+	
+}
