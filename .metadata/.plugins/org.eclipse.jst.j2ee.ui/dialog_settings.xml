@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<item key="J2EE_EXPORT_OVERWRITE" value="false"/>
+	<item key="J2EE_EXPORT_SOURCE" value="false"/>
 	<list key="MRU_RUNTIME_STORE">
 		<item value="NULL_RUNTIME"/>
+	</list>
+	<list key="J2EE_EXPORT_JST_WEB">
+		<item value="C:\desktop\draw_and_guess.war"/>
+		<item value="C:\desktop\legacy\draw_and_guess\draw_and_guess.war"/>
 	</list>
 </section>

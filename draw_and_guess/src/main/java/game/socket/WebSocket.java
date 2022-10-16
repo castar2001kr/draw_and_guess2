@@ -64,28 +64,37 @@ public class WebSocket {
 	@OnClose
 	public void handleClose() {
 		
-		synchronized(hs) {
-			
-			System.out.println("플레이어 나감");
-			
-			if(timer!=null) {
-				timer.cancel();
+		try{
+		
+			synchronized(hs) {
+				
+				System.out.println("플레이어 나감");
+				
+				if(timer!=null) {
+					timer.cancel();
+				}
+				
+				if(player!=null) {
+					service.exit(player);
+					System.out.println("나감 처림");
+				}
+				
+				
+				if(hs!=null) {
+					
+						
+					hs.removeAttribute("PLAYER");
+					hs.removeAttribute("duplicated");
+					
+				}
+				
 			}
 			
-			if(player!=null) {
-				service.exit(player);
-				System.out.println("나감 처림");
-			}
-			
-			
-			if(hs!=null) {
-				hs.removeAttribute("PLAYER");
-				hs.removeAttribute("duplicated");
-			}
-			
-			
+		}catch(Exception e) {
+			System.out.println("!!");
 		}
 		
+			
 		
 		
 		
